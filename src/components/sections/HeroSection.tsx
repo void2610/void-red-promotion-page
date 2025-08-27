@@ -7,7 +7,7 @@ import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import ParticleEffect from "@/components/ui/ParticleEffect";
 import { gameInfo } from "@/data/game-info";
 import { cn } from "@/utils/cn";
-import { voidRedGlow, DURATION, DELAY } from "@/config/animations";
+import { DURATION, DELAY } from "@/config/animations";
 
 interface HeroSectionProps {
   className?: string;
@@ -84,78 +84,43 @@ export default function HeroSection({ className }: HeroSectionProps) {
             delay={DELAY.MEDIUM}
             className="relative"
           >
-            <div className="relative">
-              {/* メインイメージ */}
-              <motion.div
-                className="relative rounded-2xl overflow-hidden shadow-2xl shadow-red-500/25"
-                {...voidRedGlow}
-              >
-                <div className="aspect-[16/10] relative">
-                  <Image
-                    src="/images/void_red_key_visual.jpg"
-                    alt={`${gameInfo.title} - メインビジュアル`}
-                    fill
-                    className="object-cover"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-
-                  {/* オーバーレイグラデーション */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-void-900/50 to-transparent" />
-                </div>
-              </motion.div>
-
-              {/* サイドエフェクト */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-24 h-24 bg-red-500/20 rounded-full blur-xl"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-
-              <motion.div
-                className="absolute -bottom-6 -left-6 w-32 h-32 bg-void-500/20 rounded-full blur-2xl"
-                animate={{
-                  scale: [1.2, 1, 1.2],
-                  opacity: [0.2, 0.4, 0.2],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-              />
+            {/* メインイメージ */}
+            <div className="relative rounded-2xl overflow-hidden">
+              <div className="aspect-[16/10] relative">
+                <Image
+                  src="/images/void_red_key_visual.jpg"
+                  alt={`${gameInfo.title} - メインビジュアル`}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </div>
           </AnimatedContainer>
         </div>
       </div>
 
       {/* スクロールインジケーター */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: DURATION.DEFAULT, delay: 1.5 }}
-      >
+      <div className="absolute bottom-4 md:bottom-8 left-0 right-0 flex justify-center z-10">
         <motion.div
-          className="w-6 h-10 border-2 border-foreground/50 rounded-full flex justify-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: DURATION.DEFAULT, delay: 1.5 }}
         >
           <motion.div
-            className="w-1 h-3 bg-foreground/70 rounded-full mt-2"
-            animate={{ opacity: [1, 0.3, 1] }}
+            className="w-8 h-12 md:w-10 md:h-16 border-2 md:border-[3px] border-white/80 rounded-full flex items-center justify-center bg-black/30 backdrop-blur-sm"
+            animate={{ y: [0, 15, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
+          >
+            <motion.div
+              className="w-1.5 h-4 md:w-2 md:h-5 bg-white rounded-full"
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </SectionContainer>
   );
 }
