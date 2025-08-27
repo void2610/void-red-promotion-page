@@ -8,7 +8,7 @@ export interface NavItem {
 export const navItems: NavItem[] = [
   {
     id: "hero",
-    label: "ホーム",
+    label: "トップ",
     href: "#hero",
   },
   {
