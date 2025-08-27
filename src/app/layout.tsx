@@ -1,19 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { HeroUIProvider } from "@heroui/react";
 import "./globals.css";
 import { gameInfo } from "@/data/game-info";
 import Header from "@/components/layout/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const logoTypeGothic = localFont({
+  src: [
+    {
+      path: "../fonts/LogoTypeGothic.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/LogoTypeGothic7.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-logotype-gothic",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "../fonts/LogoTypeGothic.otf",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -142,7 +153,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} text-foreground font-sans antialiased dark`}
+        className={`${logoTypeGothic.variable} ${geistMono.variable} text-foreground font-sans antialiased dark`}
         style={{
           backgroundImage:
             "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/assets/background.jpg)",

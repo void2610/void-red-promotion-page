@@ -32,16 +32,16 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
       {/* メインコンテンツ */}
       <div className="relative z-10 section-container">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="flex flex-col items-center justify-center min-h-[70vh]">
           {/* テキストコンテンツ */}
           <AnimatedContainer
-            variant="fadeInLeft"
+            variant="fadeInUp"
             duration={DURATION.SLOW}
-            className="text-center lg:text-left"
+            className="text-center max-w-4xl"
           >
             {/* ロゴ */}
             <motion.div
-              className="mb-8 flex justify-center lg:justify-end"
+              className="mb-8 flex justify-center"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: DURATION.DEFAULT, delay: DELAY.SMALL }}
@@ -58,7 +58,8 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
             {/* タグライン */}
             <motion.p
-              className="text-foreground/90 text-xl md:text-2xl mb-8 font-medium"
+              className="text-foreground/90 text-xl md:text-2xl mb-8 font-medium sm:whitespace-nowrap"
+              style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DURATION.DEFAULT, delay: DELAY.MEDIUM }}
@@ -68,35 +69,13 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
             {/* ゲーム説明 */}
             <motion.p
-              className="text-foreground/80 text-lg leading-relaxed mb-12 max-w-2xl"
+              className="text-foreground/80 text-lg leading-relaxed mb-12 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DURATION.DEFAULT, delay: DELAY.LARGE }}
             >
               {gameInfo.description}
             </motion.p>
-          </AnimatedContainer>
-
-          {/* ビジュアルコンテンツ */}
-          <AnimatedContainer
-            variant="fadeInRight"
-            duration={DURATION.SLOW}
-            delay={DELAY.MEDIUM}
-            className="relative"
-          >
-            {/* メインイメージ */}
-            <div className="relative rounded-2xl overflow-hidden">
-              <div className="aspect-[16/10] relative">
-                <Image
-                  src="/images/void_red_key_visual.jpg"
-                  alt={`${gameInfo.title} - メインビジュアル`}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
           </AnimatedContainer>
         </div>
       </div>

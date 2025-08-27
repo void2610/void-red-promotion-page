@@ -16,14 +16,19 @@ export default function Header({ className }: HeaderProps) {
 
   // スムーススクロール関数
   const handleNavigation = (targetId: string) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-    setIsMenuOpen(false); // モバイルメニューを閉じる
+    // メニューを先に閉じる
+    setIsMenuOpen(false);
+    
+    // 少し遅延してからスクロールを実行（メニューのアニメーションを待つ）
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
   };
 
   return (

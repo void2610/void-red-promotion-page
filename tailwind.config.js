@@ -10,6 +10,19 @@ const config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        // ベースサイズを大きくカスタマイズ
+        'xs': ['0.8rem', { lineHeight: '1.6' }],     // 12.8px → 少し大きく
+        'sm': ['0.95rem', { lineHeight: '1.6' }],    // 15.2px → 大きく
+        'base': ['1.125rem', { lineHeight: '1.75' }], // 18px → 大きく（デフォルトの16pxから）
+        'lg': ['1.25rem', { lineHeight: '1.75' }],   // 20px → 大きく
+        'xl': ['1.375rem', { lineHeight: '1.75' }],  // 22px → 大きく
+        '2xl': ['1.75rem', { lineHeight: '1.7' }],   // 28px → 大きく
+        '3xl': ['2.125rem', { lineHeight: '1.6' }],  // 34px → 大きく
+        '4xl': ['2.75rem', { lineHeight: '1.5' }],   // 44px → 大きく
+        '5xl': ['3.25rem', { lineHeight: '1.4' }],   // 52px → 大きく
+        '6xl': ['4rem', { lineHeight: '1.3' }],      // 64px → 大きく
+      },
       colors: {
         // VOID REDテーマカラー - ダークテーマ専用
         background: {
@@ -59,7 +72,7 @@ const config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-logotype-gothic)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
       },
       animation: {
