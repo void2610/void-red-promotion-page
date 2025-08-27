@@ -4,6 +4,7 @@ import ScreenshotGallery from "@/components/sections/ScreenshotGallery";
 import CharacterSection from "@/components/sections/CharacterSection";
 import TeamSection from "@/components/sections/TeamSection";
 import InfoSection from "@/components/sections/InfoSection";
+import Footer from "@/components/layout/Footer";
 
 // VOID RED メインページ
 export default function Home() {
@@ -26,6 +27,9 @@ export default function Home() {
 
       {/* 情報セクション - その他の情報と連絡先 */}
       <InfoSection />
+
+      {/* フッター - 著作権表記 */}
+      <Footer />
     </main>
   );
 }
