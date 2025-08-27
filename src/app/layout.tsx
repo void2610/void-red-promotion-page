@@ -22,7 +22,7 @@ const siteConfig = {
   name: gameInfo.title,
   description: gameInfo.description,
   url: "https://void-red.void2610.dev/",
-  ogImage: "/images/og-image.png",
+  ogImage: "/images/void_red_key_visual.jpg",
   creator: "void2610",
   keywords: [
     "ゲーム",
