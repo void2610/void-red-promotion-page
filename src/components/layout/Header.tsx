@@ -18,13 +18,36 @@ export default function Header({ className }: HeaderProps) {
   // アクティブセクション検出
   useEffect(() => {
     const sections = navItems.map((item) => item.id);
+    
     const observerOptions = {
       rootMargin: "-10% 0px -60% 0px", // より敏感な検出範囲
       threshold: [0.1, 0.3, 0.5], // 複数の閾値を設定
     };
 
+    const updateActiveSection = (sectionId: string) => {
+      setActiveSection(current => {
+        // 既に同じセクションがアクティブな場合は更新しない
+        if (current === sectionId) {
+          return current;
+        }
+        return sectionId;
+      });
+    };
+
     const observer = new IntersectionObserver((entries) => {
-      // 最も多く表示されているセクションを見つける
+      // スクロール位置チェック（最下部付近では Intersection Observer を無視）
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+      const scrollPercent = scrollTop / (docHeight - winHeight);
+
+      // 97%以上スクロールしている場合は最下部セクションを優先
+      if (scrollPercent >= 0.97) {
+        const lastSectionId = sections[sections.length - 1];
+        updateActiveSection(lastSectionId);
+      }
+
+      // 通常の Intersection Observer ロジック
       let maxIntersection = 0;
       let activeId = "";
 
@@ -36,7 +59,7 @@ export default function Header({ className }: HeaderProps) {
       });
 
       if (activeId) {
-        setActiveSection(activeId);
+        updateActiveSection(activeId);
       }
     }, observerOptions);
 
@@ -47,10 +70,10 @@ export default function Header({ className }: HeaderProps) {
       const winHeight = window.innerHeight;
       const scrollPercent = scrollTop / (docHeight - winHeight);
 
-      // 90%以上スクロールした場合は最後のセクションを強制的にアクティブに
-      if (scrollPercent >= 0.9) {
+      // 98%以上スクロールした場合は最後のセクションを強制的にアクティブに
+      if (scrollPercent >= 0.98) {
         const lastSectionId = sections[sections.length - 1];
-        setActiveSection(lastSectionId);
+        updateActiveSection(lastSectionId);
       }
     };
 
