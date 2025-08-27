@@ -1,26 +1,140 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* 背景色 - VOID REDに合わせて真っ黒ベース */
+    --background: transparent; /* 一時的に透明に */
+    --background-alt: transparent; /* 一時的に透明に */
+    --background-card: #141414; /* カード背景用 */
+
+    /* テキスト色 */
+    --foreground: #ffffff; /* 純白 */
+    --foreground-muted: #a3a3a3; /* 薄い白 */
+
+    /* アクセントカラー */
+    --accent-red: #ef4444; /* VOID RED */
+    --accent-red-dark: #dc2626; /* 濃いVOID RED */
+
+    /* ボーダー色 */
+    --border: #262626; /* 薄いグレーボーダー */
+
+    /* カード関連 */
+    --card-background: #141414; /* カード背景 */
+    --card-border: #1f1f1f; /* カードボーダー */
+  }
+
+  body {
+    @apply text-white font-sans antialiased;
+    color: var(--foreground);
+  }
+
+  /* テスト用：CSSが適用されているかを確認 */
+  .bg-game-background {
+    background-color: red !important;
+    min-height: 100vh;
+  }
+
+  /* 背景画像のフォールバック */
+  @media (max-width: 768px) {
+    .bg-game-background {
+      background-attachment: scroll;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* 全体を常にダークモードに */
+  * {
+    border-color: var(--border);
+  }
+
+  /* 背景を強制的に透明にするクラス */
+  .bg-transparent {
+    background-color: transparent !important;
+  }
+
+  /* ヘッダー固定による調整 */
+  section[id] {
+    scroll-margin-top: 4rem; /* h-16 (64px) + 余白 */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* グラデーションテキスト */
+  .gradient-text {
+    @apply bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-void {
+    @apply bg-gradient-to-r from-gray-400 to-gray-600 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-void-red {
+    @apply bg-gradient-to-r from-gray-400 via-red-500 to-red-700 bg-clip-text text-transparent;
+  }
+
+  /* セクションコンテナ */
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* カードベース - 黒背景用に最適化 */
+  .card-base {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    @apply rounded-2xl backdrop-blur-sm;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+  }
+
+  /* VOID RED背景グラデーション（予備） */
+  .bg-void-red-gradient {
+    background: linear-gradient(
+      135deg,
+      #000000 0%,
+      #0a0a0a 30%,
+      #7f1d1d 70%,
+      #ef4444 100%
+    );
+  }
+
+  /* ホバーエフェクト改善 */
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@layer utilities {
+  /* カスタム背景色ユーティリティ */
+  .bg-background {
+    background-color: var(--background);
+  }
+
+  .bg-background-alt {
+    background-color: var(--background-alt);
+  }
+
+  .bg-card {
+    background-color: var(--card-background);
+  }
+
+  /* カスタムテキストカラーユーティリティ */
+  .text-foreground {
+    color: var(--foreground);
+  }
+
+  .text-foreground-muted {
+    color: var(--foreground-muted);
+  }
+
+  /* カスタムボーダーユーティリティ */
+  .border-custom {
+    border-color: var(--border);
+  }
 }
