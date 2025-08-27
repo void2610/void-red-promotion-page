@@ -105,6 +105,7 @@ function OverlayCard({
 }: OverlayCardProps) {
   return (
     <ImageCard
+      variant="image"
       className={cn("w-full max-w-2xl mx-auto", className)}
       src={src}
       alt={alt}
@@ -141,14 +142,14 @@ function OverlayCard({
 // メインCardコンポーネント（型安全なオーバーロード）
 export default function Card(props: AllCardProps) {
   if (props.variant === "image") {
-    return <ImageCard {...props} />;
+    return <ImageCard {...(props as ImageCardProps)} />;
   }
 
   if (props.variant === "overlay") {
-    return <OverlayCard {...props} />;
+    return <OverlayCard {...(props as OverlayCardProps)} />;
   }
 
-  return <BaseCard {...props} />;
+  return <BaseCard {...(props as CardProps)} />;
 }
 
 // 個別エクスポート
