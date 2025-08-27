@@ -37,15 +37,8 @@ export default function Header({ className }: HeaderProps) {
     >
       <div className="section-container">
         <div className="flex items-center justify-between h-16">
-          {/* ロゴ/タイトル */}
-          <motion.button
-            className="text-xl md:text-2xl font-bold text-foreground hover:text-accent-red transition-colors"
-            onClick={() => handleNavigation("hero")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            VOID RED
-          </motion.button>
+          {/* 左側のスペーサー */}
+          <div className="w-8"></div>
 
           {/* デスクトップナビゲーション */}
           <nav className="hidden md:flex items-center space-x-8">

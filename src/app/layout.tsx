@@ -145,7 +145,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} text-foreground font-sans antialiased dark`}
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/backgrounds/back.jpg)",
+            "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/assets/background.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

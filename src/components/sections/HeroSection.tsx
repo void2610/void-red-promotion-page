@@ -5,7 +5,6 @@ import Image from "next/image";
 import SectionContainer from "@/components/ui/SectionContainer";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import ParticleEffect from "@/components/ui/ParticleEffect";
-import { HeroTitle } from "@/components/ui/GradientText";
 import { gameInfo } from "@/data/game-info";
 import { cn } from "@/utils/cn";
 import { voidRedGlow, DURATION, DELAY } from "@/config/animations";
@@ -40,8 +39,22 @@ export default function HeroSection({ className }: HeroSectionProps) {
             duration={DURATION.SLOW}
             className="text-center lg:text-left"
           >
-            {/* メインタイトル */}
-            <HeroTitle className="mb-6">{gameInfo.title}</HeroTitle>
+            {/* ロゴ */}
+            <motion.div
+              className="mb-8 flex justify-center lg:justify-end"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: DURATION.DEFAULT, delay: DELAY.SMALL }}
+            >
+              <Image
+                src="/images/assets/logo.png"
+                alt={`${gameInfo.title} Logo`}
+                width={500}
+                height={250}
+                className="object-contain w-full max-w-[350px] md:max-w-[450px] lg:max-w-[500px]"
+                priority
+              />
+            </motion.div>
 
             {/* タグライン */}
             <motion.p
