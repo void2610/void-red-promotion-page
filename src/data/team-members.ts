@@ -39,4 +39,8 @@ export const teamMembers: TeamMember[] = [
     name: "9ローバー🍀",
     role: "SE",
   },
+  {
+    name: "水かもめ",
+    role: "背景イラスト",
+  },
 ];
