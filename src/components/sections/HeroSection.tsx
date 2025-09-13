@@ -79,7 +79,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
             </motion.p>
 
             {/* Steamウィジェット */}
-            <SteamWidget appId="3997140" className="mt-8" />
+            <SteamWidget appId="3997140" />
           </AnimatedContainer>
         </div>
       </div>

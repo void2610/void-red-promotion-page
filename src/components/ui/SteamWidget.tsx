@@ -26,11 +26,8 @@ export default function SteamWidget({
     >
       <iframe 
         src={`https://store.steampowered.com/widget/${appId}/?utm_source=voidred-website`}
-        frameBorder="0" 
         width={width}
         height={height}
-        className="max-w-full"
-        style={{ border: 'none' }}
       />
     </motion.div>
   );
