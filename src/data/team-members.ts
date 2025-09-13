@@ -36,7 +36,7 @@ export const teamMembers: TeamMember[] = [
     role: "BGM",
   },
   {
-    name: "9ローバー🍀",
+    name: "倉本浩貴",
     role: "SE",
   },
   {
