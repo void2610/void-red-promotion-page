@@ -9,14 +9,14 @@ export interface Character {
 export const characters: Character[] = [
   {
     name: "主人公",
-    title: "失われた記憶の少女",
-    description: "ここに主人公の説明文が入ります。",
+    title: "記憶を失った少女",
+    description: "名前を含め全ての記憶を失った少女。 VOID REDを探索する。",
     imageUrl: "/images/characters/protagonist.jpg",
   },
   {
     name: "アルヴ",
     title: "謎の案内人",
-    description: "ここにアルヴの説明文が入ります。",
+    description: "自分をVOID REDの案内人と名乗る謎の存在。",
     imageUrl: "/images/characters/alv.jpg",
   },
 ];
