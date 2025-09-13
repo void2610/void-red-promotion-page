@@ -40,10 +40,16 @@
     min-height: 100vh;
   }
 
-  /* 背景画像のフォールバック */
+  /* モバイル用背景画像の修正 */
   @media (max-width: 768px) {
-    .bg-game-background {
-      background-attachment: scroll;
+    .bg-mobile-fix {
+      background-attachment: scroll !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      /* iOSでの背景固定問題を解決 */
+      -webkit-background-size: cover !important;
+      -moz-background-size: cover !important;
+      -o-background-size: cover !important;
     }
   }
 

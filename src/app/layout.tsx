@@ -154,23 +154,23 @@ export default function RootLayout({
       </head>
       <body
         className={`${logoTypeGothic.variable} ${geistMono.variable} text-foreground font-sans antialiased dark`}
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/assets/background.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-          minHeight: "100vh",
-        }}
         suppressHydrationWarning
       >
+        {/* 背景画像コンテナ - モバイル対応 */}
+        <div
+          className="fixed inset-0 -z-10 bg-mobile-fix"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/assets/background.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundAttachment: "fixed",
+          }}
+        />
         <HeroUIProvider>
           <Header />
-          <div
-            className="relative flex min-h-screen flex-col"
-            style={{ backgroundColor: "transparent" }}
-          >
+          <div className="relative flex min-h-screen flex-col">
             <div className="flex-1">{children}</div>
           </div>
         </HeroUIProvider>
