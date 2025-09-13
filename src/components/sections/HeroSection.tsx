@@ -59,8 +59,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
             {/* タグライン */}
             <motion.p
-              className="text-foreground/90 text-xl md:text-2xl mb-8 font-medium sm:whitespace-nowrap"
-              style={{ wordBreak: 'keep-all', overflowWrap: 'break-word' }}
+              className="text-foreground/90 text-xl md:text-2xl mb-8 font-medium break-all px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DURATION.DEFAULT, delay: DELAY.MEDIUM }}
