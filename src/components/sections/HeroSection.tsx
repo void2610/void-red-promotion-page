@@ -5,6 +5,7 @@ import Image from "next/image";
 import SectionContainer from "@/components/ui/SectionContainer";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import ParticleEffect from "@/components/ui/ParticleEffect";
+import SteamWidget from "@/components/ui/SteamWidget";
 import { gameInfo } from "@/data/game-info";
 import { cn } from "@/utils/cn";
 import { DURATION, DELAY } from "@/config/animations";
@@ -76,6 +77,9 @@ export default function HeroSection({ className }: HeroSectionProps) {
             >
               {gameInfo.description}
             </motion.p>
+
+            {/* Steamウィジェット */}
+            <SteamWidget appId="3997140" className="mt-8" />
           </AnimatedContainer>
         </div>
       </div>
