@@ -28,6 +28,7 @@ export default function SteamWidget({
         src={`https://store.steampowered.com/widget/${appId}/?utm_source=voidred-website`}
         width={width}
         height={height}
+        frameBorder="0"
       />
     </motion.div>
   );
