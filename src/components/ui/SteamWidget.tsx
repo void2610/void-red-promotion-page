@@ -11,9 +11,9 @@ interface SteamWidgetProps {
 }
 
 // Steam ストアウィジェットコンポーネント
-export default function SteamWidget({ 
-  appId, 
-  width = 646, 
+export default function SteamWidget({
+  appId,
+  width = 646,
   height = 190,
   className = ""
 }: SteamWidgetProps) {
@@ -24,12 +24,15 @@ export default function SteamWidget({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: DURATION.DEFAULT, delay: DELAY.LARGE + 0.2 }}
     >
-      <iframe 
-        src={`https://store.steampowered.com/widget/${appId}/?utm_source=voidred-website`}
-        width={width}
-        height={height}
-        frameBorder="0"
-      />
+      <div
+        style={{ colorScheme: 'light' }}
+      >
+        <iframe
+          src={`https://store.steampowered.com/widget/${appId}/?utm_source=voidred-website`}
+          width={width}
+          height={height}
+        />
+      </div>
     </motion.div>
   );
 }
