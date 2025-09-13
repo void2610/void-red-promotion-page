@@ -25,7 +25,7 @@ export default function SteamWidget({
       transition={{ duration: DURATION.DEFAULT, delay: DELAY.LARGE + 0.2 }}
     >
       <iframe 
-        src={`https://store.steampowered.com/widget/${appId}/`}
+        src={`https://store.steampowered.com/widget/${appId}/?utm_source=voidred-website`}
         frameBorder="0" 
         width={width}
         height={height}
