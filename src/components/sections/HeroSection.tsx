@@ -6,6 +6,7 @@ import SectionContainer from "@/components/ui/SectionContainer";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import ParticleEffect from "@/components/ui/ParticleEffect";
 import SteamWidget from "@/components/ui/SteamWidget";
+import { YouTubeEmbed } from "@/components/ui/YouTubeEmbed";
 import { gameInfo } from "@/data/game-info";
 import { cn } from "@/utils/cn";
 import { DURATION, DELAY } from "@/config/animations";
@@ -69,13 +70,22 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
             {/* ゲーム説明 */}
             <motion.p
-              className="text-foreground/80 text-lg leading-relaxed mb-12 max-w-3xl mx-auto"
+              className="text-foreground/80 text-lg leading-relaxed mb-8 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DURATION.DEFAULT, delay: DELAY.LARGE }}
             >
               {gameInfo.description}
             </motion.p>
+
+            {/* プロモーション動画 */}
+            <div className="mb-8 max-w-2xl mx-auto">
+              <YouTubeEmbed 
+                videoId="Tl3ZYcEbP8g"
+                title="VOID RED - プロモーション動画"
+                delay={1.0}
+              />
+            </div>
 
             {/* Steamウィジェット */}
             <SteamWidget appId="3997140" />
