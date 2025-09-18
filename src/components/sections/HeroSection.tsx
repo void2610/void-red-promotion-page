@@ -60,7 +60,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
             {/* タグライン */}
             <motion.p
-              className="text-foreground/90 text-xl md:text-2xl mb-8 font-medium break-all px-4"
+              className="text-foreground/90 text-xl md:text-2xl mb-12 font-medium break-all px-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DURATION.DEFAULT, delay: DELAY.MEDIUM }}
@@ -70,7 +70,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
             {/* ゲーム説明 */}
             <motion.p
-              className="text-foreground/80 text-lg leading-relaxed mb-8 max-w-3xl mx-auto"
+              className="text-foreground/80 text-lg leading-relaxed mb-12 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: DURATION.DEFAULT, delay: DELAY.LARGE }}
@@ -79,8 +79,8 @@ export default function HeroSection({ className }: HeroSectionProps) {
             </motion.p>
 
             {/* プロモーション動画 */}
-            <div className="mb-8 max-w-2xl mx-auto">
-              <YouTubeEmbed 
+            <div className="mb-12 max-w-2xl mx-auto">
+              <YouTubeEmbed
                 videoId="Tl3ZYcEbP8g"
                 title="VOID RED - プロモーション動画"
                 delay={1.0}
@@ -93,26 +93,6 @@ export default function HeroSection({ className }: HeroSectionProps) {
         </div>
       </div>
 
-      {/* スクロールインジケーター */}
-      <div className="absolute bottom-4 md:bottom-8 left-0 right-0 flex justify-center z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: DURATION.DEFAULT, delay: 1.5 }}
-        >
-          <motion.div
-            className="w-8 h-12 md:w-10 md:h-16 border-2 md:border-[3px] border-white/80 rounded-full flex items-center justify-center bg-black/30 backdrop-blur-sm"
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <motion.div
-              className="w-1.5 h-4 md:w-2 md:h-5 bg-white rounded-full"
-              animate={{ opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </motion.div>
-        </motion.div>
-      </div>
     </SectionContainer>
   );
 }

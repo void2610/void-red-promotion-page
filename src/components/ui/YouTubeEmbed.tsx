@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { DURATION, DELAY } from '@/config/animations';
+import { DURATION } from '@/config/animations';
 
 interface YouTubeEmbedProps {
   videoId: string;
