@@ -26,7 +26,7 @@ function SimpleMember({ member }: { member: TeamMember }) {
         href={member.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="group hover:text-accent-red transition-colors inline-flex items-center gap-2"
+        className="group hover:text-accent-red transition-colors flex items-center gap-2 justify-center"
       >
         {content}
         <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
