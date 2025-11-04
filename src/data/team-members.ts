@@ -50,4 +50,9 @@ export const teamMembers: TeamMember[] = [
     role: "背景イラスト",
     link: "https://www.instagram.com/mizukamome_haikei",
   },
+  {
+    name: "余々暇",
+    role: "キャラクターイラスト",
+    link: "https://x.com/44ka_9ka",
+  },
 ];
