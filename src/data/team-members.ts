@@ -41,9 +41,9 @@ export const teamMembers: TeamMember[] = [
     link: "https://x.com/watakushi110",
   },
   {
-    name: "倉本浩貴",
+    name: "9lock",
     role: "SE",
-    link: "https://x.com/kouki1763",
+    link: "https://x.com/9lock_sound",
   },
   {
     name: "水かもめ",
