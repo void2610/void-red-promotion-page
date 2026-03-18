@@ -21,7 +21,7 @@ const charVariants = {
   visible: {
     opacity: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.4, ease: "easeOut" as const },
   },
 };
 
