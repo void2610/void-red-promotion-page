@@ -124,6 +124,41 @@ export const scaleUp = {
   },
 };
 
+// ブラーエフェクト付きフェードイン
+export const blurIn = {
+  initial: {
+    opacity: 0,
+    filter: "blur(12px)",
+  },
+  animate: {
+    opacity: 1,
+    filter: "blur(0px)",
+  },
+  exit: {
+    opacity: 0,
+    filter: "blur(12px)",
+  },
+};
+
+// ブラー + 上方向フェードイン
+export const blurInUp = {
+  initial: {
+    opacity: 0,
+    y: 30,
+    filter: "blur(12px)",
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+  },
+  exit: {
+    opacity: 0,
+    y: 30,
+    filter: "blur(12px)",
+  },
+};
+
 // ホバーアニメーション
 export const hoverScale = {
   whileHover: {
@@ -250,6 +285,20 @@ export const animationPresets = {
     variants: scaleIn,
     transition: {
       duration: DURATION.DEFAULT,
+      ease: EASING.EASE_OUT,
+    },
+  },
+  blurIn: {
+    variants: blurIn,
+    transition: {
+      duration: DURATION.MEDIUM,
+      ease: EASING.EASE_OUT,
+    },
+  },
+  blurInUp: {
+    variants: blurInUp,
+    transition: {
+      duration: DURATION.MEDIUM,
       ease: EASING.EASE_OUT,
     },
   },

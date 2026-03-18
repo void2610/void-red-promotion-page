@@ -44,9 +44,9 @@ export default function HeroSection({ className }: HeroSectionProps) {
             {/* ロゴ */}
             <motion.div
               className="mb-8 flex justify-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: DURATION.DEFAULT, delay: DELAY.SMALL }}
+              initial={{ opacity: 0, scale: 0.8, filter: "blur(16px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: DURATION.MEDIUM, delay: DELAY.SMALL, ease: "easeOut" }}
             >
               <Image
                 src="/images/assets/logo.png"
@@ -61,9 +61,9 @@ export default function HeroSection({ className }: HeroSectionProps) {
             {/* タグライン */}
             <motion.p
               className="text-foreground/90 text-xl md:text-2xl mb-12 font-medium break-all px-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: DURATION.DEFAULT, delay: DELAY.MEDIUM }}
+              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: DURATION.MEDIUM, delay: DELAY.MEDIUM, ease: "easeOut" }}
             >
               {gameInfo.tagline}
             </motion.p>
@@ -71,9 +71,9 @@ export default function HeroSection({ className }: HeroSectionProps) {
             {/* ゲーム説明 */}
             <motion.p
               className="text-foreground/80 text-lg leading-relaxed mb-12 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: DURATION.DEFAULT, delay: DELAY.LARGE }}
+              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: DURATION.MEDIUM, delay: DELAY.LARGE, ease: "easeOut" }}
             >
               {gameInfo.description}
             </motion.p>

@@ -24,21 +24,25 @@ interface AnimatedContainerProps
   enableScrollAnimation?: boolean;
   stagger?: boolean;
   staggerDelay?: number;
+  blur?: boolean;
 }
 
 // アニメーション付きコンテナーコンポーネント
 export default function AnimatedContainer({
   children,
-  variant = "fadeInUp",
+  variant = "blurInUp",
   duration = DURATION.DEFAULT,
   delay = DELAY.NONE,
   className,
   enableScrollAnimation = true,
   stagger = false,
   staggerDelay = 0.1,
+  blur,
   ...props
 }: AnimatedContainerProps) {
-  const animationConfig = animationPresets[variant];
+  // blur propが明示指定された場合はblurInUpバリアントを強制
+  const resolvedVariant = blur === true ? "blurInUp" : blur === false ? "fadeInUp" : variant;
+  const animationConfig = animationPresets[resolvedVariant];
 
   const motionProps = {
     variants: animationConfig.variants,
@@ -107,12 +111,14 @@ export function AnimatedItem({
         initial: {
           opacity: 0,
           y: 30,
+          filter: "blur(12px)",
         },
         animate: {
           opacity: 1,
           y: 0,
+          filter: "blur(0px)",
           transition: {
-            duration: DURATION.DEFAULT,
+            duration: DURATION.MEDIUM,
             ease: "easeOut",
           },
         },
