@@ -39,14 +39,12 @@ export default function CharacterSection({ className }: CharacterSectionProps) {
       className={cn("bg-transparent", className)}
     >
       <div className="space-y-12">
-        {/* セクションタイトル */}
-        <AnimatedContainer variant="blurInUp" duration={DURATION.DEFAULT}>
-          <SectionTitle>キャラクター</SectionTitle>
-        </AnimatedContainer>
+        {/* セクションタイトル (SectionTitle内部でBlurTextが文字ごとのアニメーションを行う) */}
+        <SectionTitle>キャラクター</SectionTitle>
 
         {/* キャラクターカルーセル */}
         <AnimatedContainer
-          variant="blurInUp"
+          variant="blurIn"
           duration={DURATION.MEDIUM}
           delay={0.2}
         >

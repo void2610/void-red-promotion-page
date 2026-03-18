@@ -30,7 +30,7 @@ interface AnimatedContainerProps
 // アニメーション付きコンテナーコンポーネント
 export default function AnimatedContainer({
   children,
-  variant = "blurInUp",
+  variant = "blurIn",
   duration = DURATION.DEFAULT,
   delay = DELAY.NONE,
   className,

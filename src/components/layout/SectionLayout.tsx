@@ -15,18 +15,6 @@ interface SectionLayoutProps {
   fullWidth?: boolean;
   noPadding?: boolean;
   background?: "transparent" | "primary" | "alt";
-  titleAnimation?: {
-    variant?:
-      | "fadeInUp"
-      | "fadeInDown"
-      | "fadeInLeft"
-      | "fadeInRight"
-      | "scaleIn"
-      | "blurIn"
-      | "blurInUp";
-    duration?: number;
-    delay?: number;
-  };
   contentAnimation?: {
     variant?:
       | "fadeInUp"
@@ -56,13 +44,8 @@ export default function SectionLayout({
   fullWidth = false,
   noPadding = false,
   background = "transparent",
-  titleAnimation = {
-    variant: "blurInUp" as const,
-    duration: DURATION.DEFAULT,
-    delay: 0,
-  },
   contentAnimation = {
-    variant: "blurInUp" as const,
+    variant: "blurIn" as const,
     duration: DURATION.MEDIUM,
     delay: 0.2,
   },
@@ -75,15 +58,8 @@ export default function SectionLayout({
       className={cn(backgroundClasses[background], className)}
     >
       <div className="space-y-12">
-        {title && (
-          <AnimatedContainer
-            variant={titleAnimation.variant}
-            duration={titleAnimation.duration}
-            delay={titleAnimation.delay}
-          >
-            <SectionTitle>{title}</SectionTitle>
-          </AnimatedContainer>
-        )}
+        {/* SectionTitle内部でBlurTextが文字ごとのアニメーションを行う */}
+        {title && <SectionTitle>{title}</SectionTitle>}
 
         <AnimatedContainer
           variant={contentAnimation.variant}

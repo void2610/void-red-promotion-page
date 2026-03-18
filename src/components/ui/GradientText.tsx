@@ -1,5 +1,6 @@
 import { ReactNode, createElement } from "react";
 import { cn } from "@/utils/cn";
+import BlurText from "@/components/ui/BlurText";
 
 type GradientVariant = "red" | "void" | "void-red" | "primary";
 type TextSize =
@@ -103,7 +104,7 @@ export function SectionTitle({
   children,
   className,
 }: {
-  children: ReactNode;
+  children: string;
   className?: string;
 }) {
   return (
@@ -113,7 +114,7 @@ export function SectionTitle({
       size="2xl"
       className={cn("mb-8 text-center", className)}
     >
-      {children}
+      <BlurText text={children} staggerDelay={0.06} />
     </GradientText>
   );
 }

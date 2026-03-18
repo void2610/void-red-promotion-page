@@ -75,14 +75,12 @@ export default function ScreenshotGallery({
         className={cn("bg-transparent", className)}
       >
         <div className="space-y-12">
-          {/* セクションタイトル */}
-          <AnimatedContainer variant="fadeInUp" duration={DURATION.DEFAULT}>
-            <SectionTitle>スクリーンショット</SectionTitle>
-          </AnimatedContainer>
+          {/* セクションタイトル (SectionTitle内部でBlurTextが文字ごとのアニメーションを行う) */}
+          <SectionTitle>スクリーンショット</SectionTitle>
 
           {/* スクリーンショットカルーセル */}
           <AnimatedContainer
-            variant="fadeInUp"
+            variant="blurIn"
             duration={DURATION.MEDIUM}
             delay={0.2}
           >

@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionContainer from "@/components/ui/SectionContainer";
-import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import ParticleEffect from "@/components/ui/ParticleEffect";
 import SteamWidget from "@/components/ui/SteamWidget";
 import { YouTubeEmbed } from "@/components/ui/YouTubeEmbed";
+import BlurText from "@/components/ui/BlurText";
 import { gameInfo } from "@/data/game-info";
 import { cn } from "@/utils/cn";
 import { DURATION, DELAY } from "@/config/animations";
@@ -35,12 +35,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
       {/* メインコンテンツ */}
       <div className="relative z-10 section-container">
         <div className="flex flex-col items-center justify-center min-h-[70vh]">
-          {/* テキストコンテンツ */}
-          <AnimatedContainer
-            variant="fadeInUp"
-            duration={DURATION.SLOW}
-            className="text-center max-w-4xl"
-          >
+          <div className="text-center max-w-4xl">
             {/* ロゴ */}
             <motion.div
               className="mb-8 flex justify-center"
@@ -58,25 +53,25 @@ export default function HeroSection({ className }: HeroSectionProps) {
               />
             </motion.div>
 
-            {/* タグライン */}
-            <motion.p
-              className="text-foreground/90 text-xl md:text-2xl mb-12 font-medium break-all px-4"
-              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: DURATION.MEDIUM, delay: DELAY.MEDIUM, ease: "easeOut" }}
-            >
-              {gameInfo.tagline}
-            </motion.p>
+            {/* タグライン (1文字ずつブラーで登場) */}
+            <p className="text-foreground/90 text-xl md:text-2xl mb-12 font-medium break-all px-4">
+              <BlurText
+                text={gameInfo.tagline}
+                delay={DELAY.MEDIUM}
+                staggerDelay={0.05}
+                triggerOnView={false}
+              />
+            </p>
 
-            {/* ゲーム説明 */}
-            <motion.p
-              className="text-foreground/80 text-lg leading-relaxed mb-12 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: DURATION.MEDIUM, delay: DELAY.LARGE, ease: "easeOut" }}
-            >
-              {gameInfo.description}
-            </motion.p>
+            {/* ゲーム説明 (1文字ずつブラーで登場) */}
+            <p className="text-foreground/80 text-lg leading-relaxed mb-12 max-w-3xl mx-auto">
+              <BlurText
+                text={gameInfo.description}
+                delay={DELAY.LARGE}
+                staggerDelay={0.025}
+                triggerOnView={false}
+              />
+            </p>
 
             {/* プロモーション動画 */}
             <div className="mb-12 max-w-2xl mx-auto">
@@ -89,7 +84,7 @@ export default function HeroSection({ className }: HeroSectionProps) {
 
             {/* Steamウィジェット */}
             <SteamWidget appId="3997140" />
-          </AnimatedContainer>
+          </div>
         </div>
       </div>
 
