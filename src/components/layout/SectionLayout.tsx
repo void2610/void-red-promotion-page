@@ -21,7 +21,8 @@ interface SectionLayoutProps {
       | "fadeInDown"
       | "fadeInLeft"
       | "fadeInRight"
-      | "scaleIn";
+      | "scaleIn"
+      | "blurIn";
     duration?: number;
     delay?: number;
   };
@@ -31,7 +32,8 @@ interface SectionLayoutProps {
       | "fadeInDown"
       | "fadeInLeft"
       | "fadeInRight"
-      | "scaleIn";
+      | "scaleIn"
+      | "blurIn";
     duration?: number;
     delay?: number;
   };
@@ -53,12 +55,12 @@ export default function SectionLayout({
   noPadding = false,
   background = "transparent",
   titleAnimation = {
-    variant: "fadeInUp",
-    duration: DURATION.DEFAULT,
+    variant: "blurIn" as const,
+    duration: DURATION.MEDIUM,
     delay: 0,
   },
   contentAnimation = {
-    variant: "fadeInUp",
+    variant: "blurIn" as const,
     duration: DURATION.MEDIUM,
     delay: 0.2,
   },

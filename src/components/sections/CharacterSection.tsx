@@ -40,7 +40,7 @@ export default function CharacterSection({ className }: CharacterSectionProps) {
     >
       <div className="space-y-12">
         {/* セクションタイトル */}
-        <AnimatedContainer variant="fadeInUp" duration={DURATION.DEFAULT}>
+        <AnimatedContainer variant="blurIn" duration={DURATION.MEDIUM}>
           <SectionTitle>キャラクター</SectionTitle>
         </AnimatedContainer>
 
