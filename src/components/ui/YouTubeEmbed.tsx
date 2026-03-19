@@ -21,9 +21,9 @@ export function YouTubeEmbed({
 }: YouTubeEmbedProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: DURATION.DEFAULT, delay }}
+      initial={{ opacity: 0, y: 20, filter: "blur(12px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: DURATION.MEDIUM, delay, ease: "easeOut" }}
       className={`relative w-full ${className}`}
     >
       <div className="relative w-full pt-[56.25%] overflow-hidden rounded-lg shadow-2xl">
