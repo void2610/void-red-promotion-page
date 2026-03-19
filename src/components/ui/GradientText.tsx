@@ -108,14 +108,15 @@ export function SectionTitle({
   className?: string;
 }) {
   return (
-    <GradientText
-      as="h2"
-      variant="red"
-      size="2xl"
-      className={cn("mb-8 text-center", className)}
+    <h2
+      className={cn(
+        "font-bold tracking-tight leading-tight text-2xl md:text-3xl mb-8 text-center",
+        className,
+      )}
     >
-      <BlurText text={children} staggerDelay={0.06} />
-    </GradientText>
+      {/* グラデーションを各文字spanに直接適用（inline-blockとの互換性のため） */}
+      <BlurText text={children} staggerDelay={0.06} charClassName="gradient-text" />
+    </h2>
   );
 }
 

@@ -7,6 +7,8 @@ import { cn } from "@/utils/cn";
 interface BlurTextProps {
   text: string;
   className?: string;
+  // 各文字に追加するクラス (グラデーション等)
+  charClassName?: string;
   // 各文字のアニメーション開始遅延
   delay?: number;
   // 文字間のスタガー間隔 (秒)
@@ -15,12 +17,13 @@ interface BlurTextProps {
   triggerOnView?: boolean;
 }
 
-// 各文字のアニメーション定義 (y移動なし・ブラーのみ)
+// 各文字のアニメーション定義 (ブラー + 下から上へ)
 const charVariants = {
-  hidden: { opacity: 0, filter: "blur(8px)" },
+  hidden: { opacity: 0, filter: "blur(8px)", y: 16 },
   visible: {
     opacity: 1,
     filter: "blur(0px)",
+    y: 0,
     transition: { duration: 0.4, ease: "easeOut" as const },
   },
 };
@@ -29,6 +32,7 @@ const charVariants = {
 export default function BlurText({
   text,
   className,
+  charClassName,
   delay = 0,
   staggerDelay = 0.05,
   triggerOnView = true,
@@ -65,8 +69,9 @@ export default function BlurText({
             <motion.span
               key={`${lineIndex}-${charIndex}`}
               variants={charVariants}
+              className={cn("inline-block", charClassName)}
             >
-              {char}
+              {char === " " ? "\u00A0" : char}
             </motion.span>
           ))}
         </Fragment>
