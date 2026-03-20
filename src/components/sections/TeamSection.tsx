@@ -14,7 +14,7 @@ export default function TeamSection({ className }: TeamSectionProps) {
     <ContentSection id="team" title="制作メンバー" className={className}>
       <div className="text-center space-y-4 max-w-2xl mx-auto">
         {teamMembers.map((member, index) => (
-          <MemberCard key={index} member={member} variant="simple" />
+          <MemberCard key={index} member={member} variant="simple" delay={index * 0.08} />
         ))}
       </div>
     </ContentSection>

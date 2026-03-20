@@ -1,5 +1,6 @@
 import { ReactNode, createElement } from "react";
 import { cn } from "@/utils/cn";
+import BlurText from "@/components/ui/BlurText";
 
 type GradientVariant = "red" | "void" | "void-red" | "primary";
 type TextSize =
@@ -103,18 +104,19 @@ export function SectionTitle({
   children,
   className,
 }: {
-  children: ReactNode;
+  children: string;
   className?: string;
 }) {
   return (
-    <GradientText
-      as="h2"
-      variant="red"
-      size="2xl"
-      className={cn("mb-8 text-center", className)}
+    <h2
+      className={cn(
+        "font-bold tracking-tight leading-tight text-2xl md:text-3xl mb-8 text-center",
+        className,
+      )}
     >
-      {children}
-    </GradientText>
+      {/* グラデーションを各文字spanに直接適用（inline-blockとの互換性のため） */}
+      <BlurText text={children} staggerDelay={0.06} charClassName="gradient-text" />
+    </h2>
   );
 }
 

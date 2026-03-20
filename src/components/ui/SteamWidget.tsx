@@ -18,9 +18,9 @@ export default function SteamWidget({
   return (
     <motion.div
       className={`flex justify-center w-full ${className}`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: DURATION.DEFAULT, delay: DELAY.LARGE + 0.2 }}
+      initial={{ opacity: 0, y: 20, filter: "blur(12px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: DURATION.MEDIUM, delay: DELAY.LARGE + 0.2, ease: "easeOut" }}
     >
       <div
         className="w-full max-w-full overflow-hidden"

@@ -3,20 +3,26 @@
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/utils/cn";
 import type { TeamMember } from "@/data/team-members";
+import BlurText from "@/components/ui/BlurText";
 
 interface MemberCardProps {
   member: TeamMember;
   className?: string;
   variant?: "simple" | "card" | "badge";
+  delay?: number;
 }
 
 // シンプルなメンバー表示
-function SimpleMember({ member }: { member: TeamMember }) {
+function SimpleMember({ member, delay = 0 }: { member: TeamMember; delay?: number }) {
   const content = (
     <p className="text-lg text-foreground">
-      <strong className="text-foreground">{member.name}</strong>
+      <strong className="text-foreground">
+        <BlurText text={member.name} delay={delay} staggerDelay={0.06} />
+      </strong>
       {" - "}
-      <span className="text-foreground-muted">{member.role}</span>
+      <span className="text-foreground-muted">
+        <BlurText text={member.role} delay={delay + member.name.length * 0.06 + 0.05} staggerDelay={0.03} />
+      </span>
     </p>
   );
 
@@ -112,6 +118,7 @@ export default function MemberCard({
   member,
   className,
   variant = "simple",
+  delay = 0,
 }: MemberCardProps) {
   switch (variant) {
     case "card":
@@ -120,6 +127,6 @@ export default function MemberCard({
       return <BadgeMember member={member} className={className} />;
     case "simple":
     default:
-      return <SimpleMember member={member} />;
+      return <SimpleMember member={member} delay={delay} />;
   }
 }
