@@ -48,7 +48,7 @@ export default function CharacterSection({
             items={mainCharacters.map((character, index) => (
               <CharacterDetailCard key={index} character={character} />
             ))}
-            showNavigation={true}
+            showNavigation={false}
             showIndicators={true}
             className={cn("w-full mx-auto", carouselSizeClasses[size])}
           />

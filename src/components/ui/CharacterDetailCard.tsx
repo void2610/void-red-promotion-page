@@ -27,20 +27,20 @@ export default function CharacterDetailCard({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-[6fr_5fr] gap-6 md:gap-10 items-start",
+        "grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6 md:gap-10 items-start",
         "px-4 md:px-10 py-8 md:py-10",
         "bg-black/50 rounded-lg backdrop-blur-sm",
         className,
       )}
     >
-      {/* 左: キャラクター画像 (縦長・少し大きめ) */}
-      <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+      {/* 左: キャラクター画像 (縦長・大きめ) */}
+      <div className="relative w-full aspect-[3/4] md:aspect-[2/3] rounded-lg overflow-hidden">
         <Image
           src={character.imageUrl}
           alt={character.name}
           fill
           className="object-contain object-bottom"
-          sizes="(max-width: 768px) 100vw, 55vw"
+          sizes="(max-width: 768px) 100vw, 60vw"
           priority={false}
         />
       </div>
