@@ -5,14 +5,14 @@ import { ContentSection } from "@/components/layout/SectionLayout";
 import { gameInfo } from "@/data/game-info";
 import { cn } from "@/utils/cn";
 
-interface GameIntroLinkSectionProps {
+interface StoryLinkSectionProps {
   className?: string;
 }
 
-// ゲーム紹介ページへの導線セクション (ストーリープレビュー)
-export default function GameIntroLinkSection({
+// ストーリーページへの導線セクション (プレビュー)
+export default function StoryLinkSection({
   className,
-}: GameIntroLinkSectionProps) {
+}: StoryLinkSectionProps) {
   // データのテンプレートリテラル由来の先頭改行・行頭インデントを除去
   const previewText = gameInfo.storyPreview
     .split("\n")
@@ -21,7 +21,7 @@ export default function GameIntroLinkSection({
     .join("\n");
 
   return (
-    <ContentSection id="about" title="ストーリー" className={className}>
+    <ContentSection id="story" title="ストーリー" className={className}>
       <div className="max-w-3xl mx-auto">
         {/* プレビュー本文 (中央配置) */}
         <p className="text-base md:text-lg leading-loose text-foreground text-center whitespace-pre-line">
@@ -31,7 +31,7 @@ export default function GameIntroLinkSection({
         {/* 本文の斜め下 (右下) に MORE リンクを配置 */}
         <div className="mt-8 flex justify-end">
           <Link
-            href="/about"
+            href="/story"
             className={cn(
               "inline-flex items-center gap-1 text-foreground/80 hover:text-accent-red",
               "text-base md:text-lg font-medium tracking-widest",

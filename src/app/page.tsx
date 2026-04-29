@@ -1,5 +1,5 @@
 import HeroSection from "@/components/sections/HeroSection";
-import GameIntroLinkSection from "@/components/sections/GameIntroLinkSection";
+import StoryLinkSection from "@/components/sections/StoryLinkSection";
 import ScreenshotGallery from "@/components/sections/ScreenshotGallery";
 import CharacterLinkSection from "@/components/sections/CharacterLinkSection";
 import TeamSection from "@/components/sections/TeamSection";
@@ -13,8 +13,8 @@ export default function Home() {
       {/* Heroセクション - メインビジュアルとタイトル */}
       <HeroSection />
 
-      {/* ゲーム紹介ページへの導線 */}
-      <GameIntroLinkSection />
+      {/* ストーリーページへの導線 */}
+      <StoryLinkSection />
 
       {/* キャラクターページへの導線 */}
       <CharacterLinkSection />

@@ -4,14 +4,14 @@ import { ContentSection } from "@/components/layout/SectionLayout";
 import BlurText from "@/components/ui/BlurText";
 import { gameInfo } from "@/data/game-info";
 
-interface GameIntroSectionProps {
+interface StorySectionProps {
   className?: string;
 }
 
-// ゲーム紹介セクションコンポーネント
-export default function GameIntroSection({ className }: GameIntroSectionProps) {
+// ストーリーセクションコンポーネント
+export default function StorySection({ className }: StorySectionProps) {
   return (
-    <ContentSection id="about" title="ゲーム紹介" className={className}>
+    <ContentSection id="story" title="ストーリー" className={className}>
       <div className="text-center max-w-3xl mx-auto">
         <p className="text-lg leading-relaxed text-foreground-muted">
           <BlurText

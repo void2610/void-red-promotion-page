@@ -12,9 +12,9 @@ export const navItems: NavItem[] = [
     href: "#hero",
   },
   {
-    id: "about",
-    label: "ゲーム紹介",
-    href: "/about",
+    id: "story",
+    label: "ストーリー",
+    href: "/story",
   },
   {
     id: "screenshots",

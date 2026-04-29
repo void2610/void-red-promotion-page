@@ -23,7 +23,7 @@ This is a Next.js 15 promotional page for "VOID RED" game built with:
 - `src/app/` - Next.js App Router pages
 - `src/components/` - React components organized by purpose:
   - `layout/` - ヘッダーやレイアウトコンポーネント
-  - `sections/` - ページのメインセクション (Hero, GameIntro, Screenshots, etc.)
+  - `sections/` - ページのメインセクション (Hero, Story, Screenshots, etc.)
   - `ui/` - 再利用可能なUIコンポーネント
 - `src/data/` - 静的データファイル (キャラクター、チーム、ゲーム情報)
 - `src/config/` - アニメーション設定など
@@ -34,7 +34,7 @@ This is a Next.js 15 promotional page for "VOID RED" game built with:
 
 The main page (`src/app/page.tsx`) consists of these sections in order:
 1. HeroSection - メインビジュアル
-2. GameIntroSection - ゲーム紹介
+2. StorySection - ストーリー
 3. ScreenshotGallery - スクリーンショット
 4. CharacterSection - キャラクター紹介
 5. TeamSection - 制作チーム
