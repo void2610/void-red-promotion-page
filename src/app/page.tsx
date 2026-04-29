@@ -1,4 +1,5 @@
 import HeroSection from "@/components/sections/HeroSection";
+import NewsSection from "@/components/sections/NewsSection";
 import StoryLinkSection from "@/components/sections/StoryLinkSection";
 import ScreenshotGallery from "@/components/sections/ScreenshotGallery";
 import CharacterLinkSection from "@/components/sections/CharacterLinkSection";
@@ -12,6 +13,9 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       {/* Heroセクション - メインビジュアルとタイトル */}
       <HeroSection />
+
+      {/* ニュース - 最新のお知らせ */}
+      <NewsSection />
 
       {/* ストーリーページへの導線 */}
       <StoryLinkSection />
