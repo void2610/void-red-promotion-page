@@ -11,6 +11,8 @@ interface CardProps {
   variant?: "default" | "image" | "overlay";
 }
 
+type ObjectPosition = "center" | "top" | "bottom" | "left" | "right";
+
 interface ImageCardProps extends Omit<CardProps, "variant" | "children"> {
   variant: "image";
   src: string;
@@ -18,6 +20,7 @@ interface ImageCardProps extends Omit<CardProps, "variant" | "children"> {
   aspectRatio?: "square" | "video" | "portrait";
   overlay?: ReactNode;
   showOverlayOnHover?: boolean;
+  objectPosition?: ObjectPosition;
 }
 
 interface OverlayCardProps extends Omit<CardProps, "variant" | "children"> {
@@ -28,6 +31,7 @@ interface OverlayCardProps extends Omit<CardProps, "variant" | "children"> {
   subtitle?: string;
   description?: string;
   aspectRatio?: "square" | "video" | "portrait";
+  objectPosition?: ObjectPosition;
 }
 
 type AllCardProps = CardProps | ImageCardProps | OverlayCardProps;
@@ -36,6 +40,15 @@ const aspectRatioClasses = {
   square: "aspect-square",
   video: "aspect-video",
   portrait: "aspect-[3/4]",
+};
+
+// object-position 用クラスマップ
+const objectPositionClasses: Record<ObjectPosition, string> = {
+  center: "object-center",
+  top: "object-top",
+  bottom: "object-bottom",
+  left: "object-left",
+  right: "object-right",
 };
 
 // 基本カードコンポーネント
@@ -56,6 +69,7 @@ function ImageCard({
   overlay,
   showOverlayOnHover = false,
   hover = true,
+  objectPosition = "center",
 }: ImageCardProps) {
   return (
     <div className={cn("relative group", className)}>
@@ -71,6 +85,7 @@ function ImageCard({
           fill
           className={cn(
             "object-cover",
+            objectPositionClasses[objectPosition],
             hover && "transition-transform duration-300 group-hover:scale-105",
           )}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"
@@ -102,6 +117,7 @@ function OverlayCard({
   description,
   aspectRatio = "square",
   hover = true,
+  objectPosition = "center",
 }: OverlayCardProps) {
   return (
     <ImageCard
@@ -111,6 +127,7 @@ function OverlayCard({
       alt={alt}
       aspectRatio={aspectRatio}
       hover={hover}
+      objectPosition={objectPosition}
       showOverlayOnHover
       overlay={
         <>

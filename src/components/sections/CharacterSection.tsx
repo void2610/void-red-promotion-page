@@ -25,6 +25,7 @@ function CharacterCard({ character }: { character: Character }) {
       subtitle={character.title}
       description={character.description}
       aspectRatio="square"
+      objectPosition="top"
     />
   );
 }
