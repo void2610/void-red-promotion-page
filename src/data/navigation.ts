@@ -17,14 +17,14 @@ export const navItems: NavItem[] = [
     href: "/story",
   },
   {
-    id: "screenshots",
-    label: "スクリーンショット",
-    href: "#screenshots",
-  },
-  {
     id: "characters",
     label: "キャラクター",
     href: "/characters",
+  },
+  {
+    id: "screenshots",
+    label: "スクリーンショット",
+    href: "#screenshots",
   },
   {
     id: "team",
