@@ -10,6 +10,8 @@ interface NewsSectionProps {
   className?: string;
   // 表示件数 (省略時は全件)
   limit?: number;
+  // MORE リンクのリンク先 (指定時のみリンクを表示)
+  moreLinkHref?: string;
 }
 
 // ニュース 1 件分の表示
@@ -69,7 +71,11 @@ function NewsRow({ item }: { item: NewsItem }) {
 }
 
 // ニュースセクションコンポーネント
-export default function NewsSection({ className, limit }: NewsSectionProps) {
+export default function NewsSection({
+  className,
+  limit,
+  moreLinkHref,
+}: NewsSectionProps) {
   const items = getLatestNews(limit);
 
   return (
@@ -85,6 +91,24 @@ export default function NewsSection({ className, limit }: NewsSectionProps) {
               <NewsRow key={item.id} item={item} />
             ))}
           </ul>
+        )}
+
+        {/* MORE リンク (指定時のみ右下に表示) */}
+        {moreLinkHref && items.length > 0 && (
+          <div className="mt-6 flex justify-end">
+            <Link
+              href={moreLinkHref}
+              className={cn(
+                "inline-flex items-center gap-1 text-foreground/80 hover:text-accent-red",
+                "text-base md:text-lg font-medium tracking-widest",
+                "transition-colors duration-200",
+                "focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-black rounded",
+              )}
+            >
+              MORE
+              <span aria-hidden="true">≫</span>
+            </Link>
+          </div>
         )}
       </div>
     </ContentSection>

@@ -14,8 +14,8 @@ export default function Home() {
       {/* Heroセクション - メインビジュアルとタイトル */}
       <HeroSection />
 
-      {/* ニュース - 最新のお知らせ */}
-      <NewsSection />
+      {/* ニュース - 最新3件のみ表示し、全件は /news へ */}
+      <NewsSection limit={3} moreLinkHref="/news" />
 
       {/* ストーリーページへの導線 */}
       <StoryLinkSection />

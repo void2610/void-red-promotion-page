@@ -14,7 +14,7 @@ export const navItems: NavItem[] = [
   {
     id: "news",
     label: "ニュース",
-    href: "#news",
+    href: "/news",
   },
   {
     id: "story",
