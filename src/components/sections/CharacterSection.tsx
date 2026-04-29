@@ -34,7 +34,7 @@ export default function CharacterSection({
       id="characters"
       className={cn("bg-transparent", className)}
     >
-      <div className="space-y-12">
+      <div className="space-y-8">
         {/* セクションタイトル (SectionTitle内部でBlurTextが文字ごとのアニメーションを行う) */}
         <SectionTitle>キャラクター</SectionTitle>
 

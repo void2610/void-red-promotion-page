@@ -23,7 +23,7 @@ export default function SectionContainer({
       className={cn(
         "relative",
         !fullWidth && "section-container",
-        !noPadding && "py-16 md:py-20 lg:py-24",
+        !noPadding && "py-8 md:py-12 lg:py-14",
         className,
       )}
     >

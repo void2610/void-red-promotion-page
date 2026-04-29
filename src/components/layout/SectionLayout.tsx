@@ -57,7 +57,7 @@ export default function SectionLayout({
       noPadding={noPadding}
       className={cn(backgroundClasses[background], className)}
     >
-      <div className="space-y-12">
+      <div className="space-y-8">
         {/* SectionTitle内部でBlurTextが文字ごとのアニメーションを行う */}
         {title && <SectionTitle>{title}</SectionTitle>}
 
