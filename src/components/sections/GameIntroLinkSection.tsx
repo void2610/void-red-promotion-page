@@ -13,12 +13,19 @@ interface GameIntroLinkSectionProps {
 export default function GameIntroLinkSection({
   className,
 }: GameIntroLinkSectionProps) {
+  // データのテンプレートリテラル由来の先頭改行・行頭インデントを除去
+  const previewText = gameInfo.storyPreview
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0)
+    .join("\n");
+
   return (
     <ContentSection id="about" title="ストーリー" className={className}>
       <div className="max-w-3xl mx-auto">
         {/* プレビュー本文 (中央配置) */}
         <p className="text-base md:text-lg leading-loose text-foreground text-center whitespace-pre-line">
-          {gameInfo.storyPreview}
+          {previewText}
         </p>
 
         {/* 本文の斜め下 (右下) に MORE リンクを配置 */}
