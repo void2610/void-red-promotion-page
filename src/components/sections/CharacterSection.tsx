@@ -10,12 +10,27 @@ import type { Character } from "@/data/characters";
 import { cn } from "@/utils/cn";
 import { DURATION } from "@/config/animations";
 
+type CharacterSize = "default" | "large";
+
 interface CharacterSectionProps {
   className?: string;
+  size?: CharacterSize;
 }
 
+// サイズごとのカード最大幅 (twMerge により Card 内部の max-w-2xl を上書きする)
+const cardSizeClasses: Record<CharacterSize, string> = {
+  default: "",
+  large: "max-w-4xl",
+};
+
 // キャラクターカードコンポーネント
-function CharacterCard({ character }: { character: Character }) {
+function CharacterCard({
+  character,
+  size = "default",
+}: {
+  character: Character;
+  size?: CharacterSize;
+}) {
   return (
     <Card
       variant="overlay"
@@ -26,12 +41,16 @@ function CharacterCard({ character }: { character: Character }) {
       description={character.description}
       aspectRatio="square"
       objectPosition="top"
+      className={cardSizeClasses[size]}
     />
   );
 }
 
 // キャラクターセクションコンポーネント
-export default function CharacterSection({ className }: CharacterSectionProps) {
+export default function CharacterSection({
+  className,
+  size = "default",
+}: CharacterSectionProps) {
   const mainCharacters = getMainCharacters();
 
   return (
@@ -51,7 +70,7 @@ export default function CharacterSection({ className }: CharacterSectionProps) {
         >
           <Carousel
             items={mainCharacters.map((character, index) => (
-              <CharacterCard key={index} character={character} />
+              <CharacterCard key={index} character={character} size={size} />
             ))}
             showNavigation={true}
             showIndicators={true}

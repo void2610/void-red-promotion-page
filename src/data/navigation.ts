@@ -24,7 +24,7 @@ export const navItems: NavItem[] = [
   {
     id: "characters",
     label: "キャラクター",
-    href: "#characters",
+    href: "/characters",
   },
   {
     id: "team",
