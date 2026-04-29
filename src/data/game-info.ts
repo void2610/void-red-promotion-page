@@ -4,6 +4,7 @@ export interface GameInfo {
   tagline: string;
   description: string;
   longDescription: string;
+  storyPreview: string;
   genre: string[];
   platforms: string;
   languages: string[];
@@ -25,6 +26,10 @@ export const gameInfo: GameInfo = {
 語りの履歴は人格ログとして記録され、周回時に再構成されることで、プレイヤー自身の語りが物語になります。札は進化・破損・変質し、敵の反応も語り履歴によって変化するため、記憶との接続が繰り返し深まっていきます。
 
 VOID REDは、「語りが届くかどうか」を問い続けるゲーム体験を軸に、記憶・感情・選択の意味をプレイヤーに委ねる作品です。`,
+  storyPreview: `
+  人生に疲れ切っていた主人公は記憶の再選択をするオークション会場「VOID RED」に行き着く。
+  支配人アルヴの案内により、自らが借じた記憶を取り戻すか、自分を苦しめた記憶を放棄するかを迫られる。
+  あなたは自分の選択を後悔しないと言えるだろうか？`,
   genre: ["記憶と感情を揺さぶる対話型カードゲーム"],
   platforms: "Steam (Windows, Mac)",
   languages: ["日本語", "英語(予定)"],

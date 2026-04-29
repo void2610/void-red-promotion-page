@@ -14,7 +14,7 @@ export const navItems: NavItem[] = [
   {
     id: "about",
     label: "ゲーム紹介",
-    href: "#about",
+    href: "/about",
   },
   {
     id: "screenshots",

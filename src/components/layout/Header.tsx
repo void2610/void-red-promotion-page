@@ -1,24 +1,46 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navItems } from "@/data/navigation";
+import { navItems, type NavItem } from "@/data/navigation";
 import { cn } from "@/utils/cn";
 
 interface HeaderProps {
   className?: string;
 }
 
+// href がページパス (/xxx) かアンカー (#xxx) かを判定
+const isRouteHref = (href: string) => href.startsWith("/");
+
 // VOID RED ヘッダーナビゲーションコンポーネント
 export default function Header({ className }: HeaderProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
-  // アクティブセクション検出
+  // ルート単位のアクティブ判定
+  // ホームでなければ、現在のパスと一致するルート型 NavItem をアクティブにする
+  const routeActiveId = (() => {
+    if (pathname === "/") return null;
+    const match = navItems.find(
+      (item) => isRouteHref(item.href) && item.href === pathname,
+    );
+    return match?.id ?? null;
+  })();
+
+  // アクティブセクション検出 (ホームでのスクロールベース判定)
   useEffect(() => {
-    const sections = navItems.map((item) => item.id);
-    
+    // ホーム以外ではスクロール監視を行わない (ルートでアクティブを決める)
+    if (pathname !== "/") return;
+
+    // ホーム上のアンカー型 NavItem のみ対象
+    const sections = navItems
+      .filter((item) => !isRouteHref(item.href))
+      .map((item) => item.id);
+
     const observerOptions = {
       rootMargin: "-10% 0px -60% 0px", // より敏感な検出範囲
       threshold: [0.1, 0.3, 0.5], // 複数の閾値を設定
@@ -97,16 +119,28 @@ export default function Header({ className }: HeaderProps) {
       });
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
-  // スムーススクロール関数
-  const handleNavigation = (targetId: string) => {
+  // ナビゲーション処理
+  // ・ルート型 (/xxx) はページ遷移
+  // ・アンカー型 (#xxx) は、ホームならスムーズスクロール、別ページなら "/" + ハッシュへ遷移
+  const handleNavigation = (item: NavItem) => {
     // メニューを先に閉じる
     setIsMenuOpen(false);
-    
+
+    if (isRouteHref(item.href)) {
+      router.push(item.href);
+      return;
+    }
+
+    if (pathname !== "/") {
+      router.push(`/${item.href}`);
+      return;
+    }
+
     // 少し遅延してからスクロールを実行（メニューのアニメーションを待つ）
     setTimeout(() => {
-      const element = document.getElementById(targetId);
+      const element = document.getElementById(item.id);
       if (element) {
         element.scrollIntoView({
           behavior: "smooth",
@@ -115,6 +149,9 @@ export default function Header({ className }: HeaderProps) {
       }
     }, 100);
   };
+
+  // 現在ハイライトすべき NavItem id (ルート優先)
+  const currentActiveId = routeActiveId ?? activeSection;
 
   return (
     <header
@@ -137,9 +174,9 @@ export default function Header({ className }: HeaderProps) {
                 key={item.id}
                 className={cn(
                   "text-foreground hover:text-accent-red transition-colors font-medium relative",
-                  activeSection === item.id && "text-accent-red"
+                  currentActiveId === item.id && "text-accent-red"
                 )}
-                onClick={() => handleNavigation(item.id)}
+                onClick={() => handleNavigation(item)}
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -147,7 +184,7 @@ export default function Header({ className }: HeaderProps) {
               >
                 {item.label}
                 {/* アクティブインジケーター */}
-                {activeSection === item.id && (
+                {currentActiveId === item.id && (
                   <motion.div
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-red rounded-full"
                     layoutId="activeIndicator"
@@ -190,16 +227,16 @@ export default function Header({ className }: HeaderProps) {
                     key={item.id}
                     className={cn(
                       "block w-full text-left px-6 py-3 text-foreground hover:text-accent-red hover:bg-white/5 transition-colors font-medium relative",
-                      activeSection === item.id && "text-accent-red bg-white/10"
+                      currentActiveId === item.id && "text-accent-red bg-white/10"
                     )}
-                    onClick={() => handleNavigation(item.id)}
+                    onClick={() => handleNavigation(item)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
                     {item.label}
                     {/* モバイル用アクティブインジケーター */}
-                    {activeSection === item.id && (
+                    {currentActiveId === item.id && (
                       <motion.div
                         className="absolute left-0 top-0 bottom-0 w-1 bg-accent-red"
                         layoutId="mobileActiveIndicator"
