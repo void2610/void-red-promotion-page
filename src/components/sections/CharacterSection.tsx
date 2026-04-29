@@ -4,9 +4,8 @@ import SectionContainer from "@/components/ui/SectionContainer";
 import AnimatedContainer from "@/components/ui/AnimatedContainer";
 import { SectionTitle } from "@/components/ui/GradientText";
 import Carousel from "@/components/ui/Carousel";
-import Card from "@/components/ui/Card";
+import CharacterDetailCard from "@/components/ui/CharacterDetailCard";
 import { getMainCharacters } from "@/data/characters";
-import type { Character } from "@/data/characters";
 import { cn } from "@/utils/cn";
 import { DURATION } from "@/config/animations";
 
@@ -17,34 +16,11 @@ interface CharacterSectionProps {
   size?: CharacterSize;
 }
 
-// サイズごとのカード最大幅 (twMerge により Card 内部の max-w-2xl を上書きする)
-const cardSizeClasses: Record<CharacterSize, string> = {
-  default: "",
-  large: "max-w-4xl",
+// サイズごとのカルーセル最大幅
+const carouselSizeClasses: Record<CharacterSize, string> = {
+  default: "max-w-3xl",
+  large: "max-w-6xl",
 };
-
-// キャラクターカードコンポーネント
-function CharacterCard({
-  character,
-  size = "default",
-}: {
-  character: Character;
-  size?: CharacterSize;
-}) {
-  return (
-    <Card
-      variant="overlay"
-      src={character.imageUrl}
-      alt={character.name}
-      title={character.name}
-      subtitle={character.title}
-      description={character.description}
-      aspectRatio="square"
-      objectPosition="top"
-      className={cardSizeClasses[size]}
-    />
-  );
-}
 
 // キャラクターセクションコンポーネント
 export default function CharacterSection({
@@ -62,7 +38,7 @@ export default function CharacterSection({
         {/* セクションタイトル (SectionTitle内部でBlurTextが文字ごとのアニメーションを行う) */}
         <SectionTitle>キャラクター</SectionTitle>
 
-        {/* キャラクターカルーセル */}
+        {/* キャラクターカルーセル (画像左・テキスト右の詳細レイアウト) */}
         <AnimatedContainer
           variant="blurIn"
           duration={DURATION.MEDIUM}
@@ -70,11 +46,11 @@ export default function CharacterSection({
         >
           <Carousel
             items={mainCharacters.map((character, index) => (
-              <CharacterCard key={index} character={character} size={size} />
+              <CharacterDetailCard key={index} character={character} />
             ))}
             showNavigation={true}
             showIndicators={true}
-            className="w-full"
+            className={cn("w-full mx-auto", carouselSizeClasses[size])}
           />
         </AnimatedContainer>
       </div>

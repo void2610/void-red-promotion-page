@@ -1,9 +1,17 @@
 // VOID REDのキャラクター情報
 export interface Character {
   name: string;
+  // ローマ字 / 英表記 (例: "Temari")
+  nameEn?: string;
   title?: string;
   description: string;
   imageUrl: string;
+  // プロフィール詳細 (任意)
+  birthday?: string;
+  age?: string;
+  height?: string;
+  // 代表的なセリフ (鉤括弧無しで記述、表示側で装飾)
+  quote?: string;
 }
 
 export const characters: Character[] = [
