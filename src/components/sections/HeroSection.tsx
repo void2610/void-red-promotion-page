@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionContainer from "@/components/ui/SectionContainer";
+import SectionBackground from "@/components/ui/SectionBackground";
 import ParticleEffect from "@/components/ui/ParticleEffect";
 import SteamWidget from "@/components/ui/SteamWidget";
 import { YouTubeEmbed } from "@/components/ui/YouTubeEmbed";
@@ -26,6 +27,14 @@ export default function HeroSection({ className }: HeroSectionProps) {
         className,
       )}
     >
+      {/* 背景画像 (キービジュアル) */}
+      <SectionBackground
+        image="/images/assets/key_visual.png"
+        alt=""
+        overlayOpacity={0.5}
+        priority
+      />
+
       {/* 背景エフェクト */}
       <div className="absolute inset-0">
         {/* パーティクルエフェクト */}
