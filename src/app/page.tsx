@@ -16,11 +16,11 @@ export default function Home() {
       {/* ゲーム紹介ページへの導線 */}
       <GameIntroLinkSection />
 
-      {/* スクリーンショットギャラリー - ゲームプレイ画面 */}
-      <ScreenshotGallery />
-
       {/* キャラクターページへの導線 */}
       <CharacterLinkSection />
+
+      {/* スクリーンショットギャラリー - ゲームプレイ画面 */}
+      <ScreenshotGallery />
 
       {/* チームセクション - 制作メンバー紹介 */}
       <TeamSection />
